@@ -5,12 +5,14 @@ import { get as CacheGet, put as CachePut } from "./cache";
 
 const grammar = Grammar.fromCompiled(rules);
 
+export * from "./transformers";
+
 export interface CompileOptions {
     cache?: boolean;
     transformer?: ITransformer;
 }
 
-function Compile(code: string, options: CompileOptions = {}): Promise<string> {
+export function Compile(code: string, options: CompileOptions = {}): Promise<string> {
     return new Promise((resolve, reject) => {
         try {
             if (options.cache !== false) {
@@ -36,8 +38,4 @@ function Compile(code: string, options: CompileOptions = {}): Promise<string> {
             reject(error);
         }
     });
-}
-
-module.exports = {
-    Compile
 }

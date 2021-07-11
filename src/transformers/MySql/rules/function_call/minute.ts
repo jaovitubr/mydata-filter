@@ -1,11 +1,11 @@
 import MySqlTransformer from "../..";
 
-export default function ROUND(node: any, ctx: MySqlTransformer) {
+export default function MINUTE(node: any, ctx: MySqlTransformer) {
     const argument_node = node.arguments[0];
-    const possible_types = ["NUMBER", "IDENTIFIER", "IDENTIFIER_PATH"];
+    const possible_types = ["STRING", "IDENTIFIER", "IDENTIFIER_PATH"];
 
     if (possible_types.includes(argument_node.type)) {
-        return `ROUND(${ctx.transform(argument_node)})`;
+        return `MINUTE(${ctx.transform(argument_node)})`;
     } else {
         throw new Error(`invalid argument ${node.value} of ${node.function_name}`);
     }

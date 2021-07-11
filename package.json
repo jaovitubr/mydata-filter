@@ -1,24 +1,37 @@
 {
-  "name": "data-query-filter",
+  "name": "odata-filter",
   "description": "This library makes it easy to filter data queries in the remaining API",
-  "version": "1.0.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "version": "1.0.2",
+  "main": "libs/index.js",
+  "types": "libs/index.d.ts",
+  "files": [
+    "**/*.js",
+    "**/*.d.ts"
+  ],
   "scripts": {
-    "build": "npm run generate && tsc",
-    "generate": "nearleyc ./src/rules.ne -o ./src/rules.ts"
+    "clean": "rimraf libs/",
+    "build": "npm run generate && npm run clean && tsc",
+    "generate": "nearleyc ./src/rules.ne -o ./src/rules.ts",
+    "prepare": "npm run build"
   },
   "author": "João Vitor Machado",
   "license": "MIT",
+  "homepage": "https://github.com/joaovitmac/odata-filter#readme",
+  "bugs": {
+    "url": "https://github.com/joaovitmac/odata-filter/issues"
+  },
   "keywords": [
+    "odata",
     "querystring",
     "parser",
-    "util"
+    "filter",
+    "rest"
   ],
   "devDependencies": {
     "@types/moo": "^0.5.5",
     "@types/node": "^16.3.1",
     "moo": "^0.5.1",
+    "rimraf": "^3.0.2",
     "typescript": "^4.3.5"
   },
   "dependencies": {

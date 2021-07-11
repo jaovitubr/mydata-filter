@@ -9,6 +9,13 @@ import UPPER from "./upper";
 import CONTAINS from "./contains";
 import ENDS_WITH from "./ends_with";
 import STARTS_WITH from "./starts_with";
+import CONCAT from "./concat";
+import TRIM from "./trim";
+import MONTH from "./month";
+import DAY from "./day";
+import HOUR from "./hour";
+import MINUTE from "./minute";
+import SECOND from "./second";
 
 const functions: IRuleObject = {
     CEIL,
@@ -19,6 +26,13 @@ const functions: IRuleObject = {
     CONTAINS,
     ENDS_WITH,
     STARTS_WITH,
+    CONCAT,
+    TRIM,
+    MONTH,
+    DAY,
+    HOUR,
+    MINUTE,
+    SECOND,
 }
 
 export default function FUNCTION_CALL(node: any, ctx: MySqlTransformer) {
