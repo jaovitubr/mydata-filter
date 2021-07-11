@@ -1,4 +1,5 @@
-# oData Filter  - Javascript-Linq to Odata
+# oData Filter
+This library makes it easy to filter data queries in the remaining API
 
 [![npm version](https://badge.fury.io/js/odata-filter.svg)](https://badge.fury.io/js/odata-filter)
 [![GitHub issues](https://img.shields.io/github/issues/joaovitmac/odata-filter.svg)](https://github.com/joaovitmac/odata-filter/issues)
