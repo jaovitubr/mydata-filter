@@ -91,6 +91,11 @@ Less Than | <
 Greater Than | >
 Logical And | && | and
 Logical Or | \|\| | or
+Contains | *=
+Contains Word | ~=
+Starts With | ^=
+Ends With | =$
+Logical Or | \|\| | or
 Arithmetic Add | +
 Arithmetic Subtraction | -
 Arithmetic Multiplication | *
