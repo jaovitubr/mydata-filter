@@ -1,7 +1,7 @@
 import MySqlTransformer from "..";
 
 export default function CONTAINS_WORD(node: any, ctx: MySqlTransformer) {
-    const possible_types = ["STRING", "IDENTIFIER", "IDENTIFIER_PATH"];
+    const possible_types = ["STRING", "IDENTIFIER", "IDENTIFIER_PATH", "FUNCTION_CALL"];
 
     if (possible_types.includes(node.left.type) && possible_types.includes(node.right.type)) {
         return `${ctx.transform(node.left)} REGEXP CONCAT('\\b', ${ctx.transform(node.right)}, '\\b')`;
