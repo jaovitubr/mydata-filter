@@ -95,7 +95,6 @@ Contains | *=
 Contains Word | ~=
 Starts With | ^=
 Ends With | =$
-Logical Or | \|\| | or
 Arithmetic Add | +
 Arithmetic Subtraction | -
 Arithmetic Multiplication | *
