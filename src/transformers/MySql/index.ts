@@ -18,7 +18,7 @@ export default class MySqlTransformer implements ITransformer {
 
     mysql_escape_string(str: string) {
         if (!str) return str;
-        console.log(str)
+
         return str
             .replace(/([\uE000-\uF8FF]|\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDDFF])/g, "") // remove emojis
             .replace(/[\0\x08\x09\x1a\n\r"'\\\%]/g, function (char) { // escape
