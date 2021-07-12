@@ -83,8 +83,8 @@ TypeOrmTransformer({}): string; // inDev
 
 Name | Operator | Alias
 ------------ | ------------- | -------------
-Equals | == | ===
-Not Equals | != | !==
+Equals | ==
+Not Equals | !=
 Less than or equal | <=
 Greater Than or Equal | >=
 Less Than | <
