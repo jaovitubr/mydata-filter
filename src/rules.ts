@@ -28,6 +28,8 @@ declare var LPAREN: any;
 declare var RPAREN: any;
 declare var DOT: any;
 declare var IDENTIFIER: any;
+declare var LBRACKET: any;
+declare var RBRACKET: any;
 declare var COMMA: any;
 declare var WS: any;
 
@@ -96,7 +98,10 @@ const grammar: Grammar = {
     {"name": "ExpProduct", "symbols": [(myLexer.has("BOOLEAN") ? {type: "BOOLEAN"} : BOOLEAN)], "postprocess": id},
     {"name": "Parentheses", "symbols": [(myLexer.has("LPAREN") ? {type: "LPAREN"} : LPAREN), "_", "Exp", "_", (myLexer.has("RPAREN") ? {type: "RPAREN"} : RPAREN)], "postprocess": d => ({ type: "PARENTHESES", data: d[2] })},
     {"name": "Identifier", "symbols": ["Identifier", (myLexer.has("DOT") ? {type: "DOT"} : DOT), (myLexer.has("IDENTIFIER") ? {type: "IDENTIFIER"} : IDENTIFIER)], "postprocess": d => ({ type: "IDENTIFIER_PATH", data: "data" in d[0] ? [...d[0].data, d[2]] : [d[0], d[2]] })},
+    {"name": "Identifier", "symbols": ["Identifier", "BracketIdentifier"], "postprocess": d => ({ type: "IDENTIFIER_PATH", data: "data" in d[0] ? [...d[0].data, d[1]] : [d[0], d[1]] })},
+    {"name": "Identifier", "symbols": ["BracketIdentifier"], "postprocess": id},
     {"name": "Identifier", "symbols": [(myLexer.has("IDENTIFIER") ? {type: "IDENTIFIER"} : IDENTIFIER)], "postprocess": id},
+    {"name": "BracketIdentifier", "symbols": [(myLexer.has("LBRACKET") ? {type: "LBRACKET"} : LBRACKET), "_", (myLexer.has("STRING") ? {type: "STRING"} : STRING), "_", (myLexer.has("RBRACKET") ? {type: "RBRACKET"} : RBRACKET)], "postprocess": d => d[2]},
     {"name": "FuntionCall", "symbols": [(myLexer.has("IDENTIFIER") ? {type: "IDENTIFIER"} : IDENTIFIER), "_", (myLexer.has("LPAREN") ? {type: "LPAREN"} : LPAREN), "_", "FunctionArguments", "_", (myLexer.has("RPAREN") ? {type: "RPAREN"} : RPAREN)], "postprocess": d => ({ type: "FUNCTION_CALL", function_name: d[0].value, arguments: d[4] })},
     {"name": "FunctionArguments", "symbols": ["FunctionArguments", "_", (myLexer.has("COMMA") ? {type: "COMMA"} : COMMA), "_", "ExpProduct"], "postprocess": d => [...d[0], d[4]]},
     {"name": "FunctionArguments", "symbols": ["ExpProduct"], "postprocess": d => [d[0]]},

@@ -55,7 +55,12 @@ Parentheses ->
 
 Identifier ->
 	  Identifier %DOT %IDENTIFIER {% d => ({ type: "IDENTIFIER_PATH", data: "data" in d[0] ? [...d[0].data, d[2]] : [d[0], d[2]] }) %}
+	| Identifier BracketIdentifier {% d => ({ type: "IDENTIFIER_PATH", data: "data" in d[0] ? [...d[0].data, d[1]] : [d[0], d[1]] }) %}
+    | BracketIdentifier {% id %}
     | %IDENTIFIER {% id %}
+
+BracketIdentifier ->
+	  %LBRACKET _ %STRING _ %RBRACKET {% d => d[2] %}
 
 FuntionCall ->
 	  %IDENTIFIER _ %LPAREN _ FunctionArguments _ %RPAREN {% d => ({ type: "FUNCTION_CALL", function_name: d[0].value, arguments: d[4] }) %}
