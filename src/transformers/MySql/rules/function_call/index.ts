@@ -37,6 +37,11 @@ const functions: IRuleObject = {
 
 export default function FUNCTION_CALL(node: any, ctx: MySqlTransformer) {
     if (Object.keys(functions).includes(node.function_name)) {
+        ctx.inline_functions++;
+
+        if (ctx.options.max_inline_functions && ctx.inline_functions > ctx.options.max_inline_functions)
+            throw new Error("function call limit exceeded");
+
         return functions[node.function_name](node, ctx);
     } else {
         throw new Error(`invalid function ${node.function_name}`);

@@ -1,12 +1,15 @@
 import { ITransformer } from "..";
 import rules from "./rules";
 
-export default class MySqlTransformer implements ITransformer {
-    options;
+export interface MySqlTransformerOptions {
+    max_inline_functions?: number;
+    scope?: string[][];
+}
 
-    constructor(options = {}) {
-        this.options = options;
-    }
+export default class MySqlTransformer implements ITransformer {
+    inline_functions = 0;
+
+    constructor(public options: MySqlTransformerOptions) { }
 
     transform(rule: any) {
         if (Object.keys(rules).includes(rule.type)) {
