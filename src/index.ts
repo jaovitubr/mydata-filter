@@ -13,7 +13,7 @@ export interface CompileOptions {
     max_length?: number;
 }
 
-export function Parse(code: string, options: CompileOptions): Promise<string> {
+export function Parse(code: string, options: CompileOptions = {}): Promise<string> {
     return new Promise((resolve, reject) => {
         try {
             const result = ParseSync(code, options);
@@ -24,7 +24,7 @@ export function Parse(code: string, options: CompileOptions): Promise<string> {
     });
 }
 
-export function ParseSync(code: string, options: CompileOptions): string {
+export function ParseSync(code: string, options: CompileOptions = {}): string {
     if (!code?.length) return "";
 
     if (options.max_length && code.length > options.max_length)

@@ -1,7 +1,7 @@
 {
   "name": "odata-filter",
   "description": "This library makes it easy to filter data queries in the remaining API",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "main": "libs/index.js",
   "types": "libs/index.d.ts",
   "files": [
