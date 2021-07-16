@@ -9,7 +9,7 @@ export interface MySqlTransformerOptions {
 export default class MySqlTransformer implements ITransformer {
     inline_functions = 0;
 
-    constructor(public options: MySqlTransformerOptions) { }
+    constructor(public options: MySqlTransformerOptions = {}) { }
 
     transform(rule: any) {
         if (Object.keys(rules).includes(rule.type)) {
