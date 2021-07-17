@@ -2,14 +2,14 @@
   "name": "odata-filter",
   "description": "This library makes it easy to filter data queries in the remaining API",
   "version": "1.0.9",
-  "main": "libs/index.js",
-  "types": "libs/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "**/*.js",
     "**/*.d.ts"
   ],
   "scripts": {
-    "clean": "rimraf libs/",
+    "clean": "rimraf dist/",
     "build": "npm run generate && npm run clean && tsc",
     "generate": "nearleyc ./src/rules.ne -o ./src/rules.ts",
     "prepare": "npm run build"
