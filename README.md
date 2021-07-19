@@ -1,5 +1,5 @@
 # oData Filter
-This library makes it easy to filter data queries in the remaining API
+Small filter library for working with immutable AST(abstract syntax trees) and queries
 
 [![npm version](https://badge.fury.io/js/odata-filter.svg)](https://badge.fury.io/js/odata-filter)
 [![GitHub issues](https://img.shields.io/github/issues/joaovitmac/odata-filter.svg)](https://github.com/joaovitmac/odata-filter/issues)
@@ -19,11 +19,11 @@ npm install odata-filter
 Compile a JSON-AST code that can be used later by a transformer:
 
 ```javascript
-const { Compile: QueryFilterCompile, MySqlTransformer } = require("odata-filter");
+import { Parse } from "odata-filter";
 
 const code = `(user.username == "Ana") or (username == "Mari")`;
 
-QueryFilterCompile(code).then(ast => {
+Parse(code).then(ast => {
     console.log(ast); // { type: "...", ... }
 }).catch(error => {
     console.error(error);
@@ -33,11 +33,12 @@ QueryFilterCompile(code).then(ast => {
 Compile a mysql where clause from a string using a transformer:
 
 ```javascript
-const { Compile: QueryFilterCompile, MySqlTransformer } = require("odata-filter");
+import { Parse } from "odata-filter";
+import MySqlTransformer from "odata-filter-mysql";
 
 const code = `(user.username == "Ana") or (username == "Ana")`;
 
-QueryFilterCompile(code, {
+Parse(code, {
     transformer: new MySqlTransformer()
 }).then(query => {
     console.log(query); // (`user`.`username` == 'Ana') OR (`username` == 'Ana')
@@ -46,38 +47,25 @@ QueryFilterCompile(code, {
 });
 ```
 
-Exemplo prático usando um servidor express
-```javascript
-const { Compile: QueryFilterCompile, MySqlTransformer } = require("odata-filter");
-const express = require('express');
-const app = express();
-
-// respond with compiled mysql query
-app.get('/', function (req, res) {
-    QueryFilterCompile(req.query.filter, {
-        transformer: new MySqlTransformer()
-    }).then(query => {
-        res.send(query);
-    }).catch(error => {
-        res.status(400).send(error);
-    });
-});
-```
-
 ## Supported Functions
+
 ```typescript
-Compile(code, {
+Parse(code, {
   cache?: boolean,
   transformer?: ITransformer
 }): Promise<any>;
 ```
 
-## Available Embeded Transformers
 ```typescript
-MySqlTransformer({}): string;
-
-TypeOrmTransformer({}): string; // inDev
+ParseSync(code, {
+  cache?: boolean,
+  transformer?: ITransformer
+}): any;
 ```
+
+## Available Common Transformers
+* [odata-filter-mysql](https://github.com/joaovitmac/odata-filter-mysql)
+* [odata-filter-postgresql](https://github.com/joaovitmac/odata-filter-postgresql)
 
 ## Supported Operators
 
