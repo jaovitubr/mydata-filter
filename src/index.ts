@@ -7,7 +7,6 @@ const grammar = Grammar.fromCompiled(rules);
 export interface ITransformer {
     transform(rule: any): any;
 }
-
 export interface ParseOptions {
     cache?: boolean;
     transformer?: ITransformer;
