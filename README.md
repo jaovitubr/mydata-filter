@@ -67,6 +67,12 @@ ParseSync(code, {
 * [odata-filter-mysql](https://github.com/joaovitmac/odata-filter-mysql)
 * [odata-filter-postgresql](https://github.com/joaovitmac/odata-filter-postgresql)
 
+## Functions Syntax
+```javascript
+FUNCTION_NAME(arg1, arg2, ...)
+LOWER(arg1)
+concat(arg1, arg2)
+```
 ## Supported Operators
 
 Name | Operator | Alias
@@ -87,21 +93,3 @@ Arithmetic Add | +
 Arithmetic Subtraction | -
 Arithmetic Multiplication | *
 Arithmetic Division | /
-
-## Supported Inline Functions
-Name | Arguments
------------- | -------------
-ROUND | Number \| Identifier
-CEIL | Number \| Identifier
-FLOOR | Number \| Identifier
-LOWER | String \| Identifier
-UPPER | String \| Identifier
-TRIM | String \| Identifier
-CONTAINS | String \| Identifier, String \| Identifier \| Number
-STARTS_WITH | String \| Identifier, String \| Identifier \| Number
-ENDS_WITH | String \| Identifier, String \| Identifier \| Number
-CONCAT | String \| Identifier \| Number, ...
-MONTH | String \| Identifier
-HOUR | String \| Identifier
-MINUTE | String \| Identifier
-SECOND | String \| Identifier
