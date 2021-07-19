@@ -45,5 +45,7 @@ export default moo.compile({
     STRING: {
         match: /"(?:\\"|[^"])*"|'(?:\\"|[^"])*'/,
         value: rule => rule.replace(/^("|')|("|')$/g, ""),
-    }
+    },
+
+    SyntaxError: moo.error
 });
