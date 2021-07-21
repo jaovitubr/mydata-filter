@@ -1,7 +1,7 @@
 {
-  "name": "odata-filter",
+  "name": "mydata-filter",
   "description": "This library makes it easy to filter data queries in the remaining API",
-  "version": "1.1.2",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -16,9 +16,9 @@
   },
   "author": "João Vitor Machado",
   "license": "MIT",
-  "homepage": "https://github.com/joaovitmac/odata-filter#readme",
+  "homepage": "https://github.com/joaovitmac/mydata-filter#readme",
   "bugs": {
-    "url": "https://github.com/joaovitmac/odata-filter/issues"
+    "url": "https://github.com/joaovitmac/mydata-filter/issues"
   },
   "keywords": [
     "odata",
