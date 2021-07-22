@@ -83,8 +83,8 @@ Less than or equal | <=
 Greater Than or Equal | >=
 Less Than | <
 Greater Than | >
-Logical And | && | and
-Logical Or | \|\| | or
+Logical And | && | AND
+Logical Or | \|\| | OR
 Contains | *=
 Contains Word | ~=
 Starts With | ^=

@@ -17,8 +17,8 @@ export default moo.compile({
     // Logical
     LAND: "&&",
     LOR: "||",
-    AND: "and",
-    OR: "or",
+    AND: /[Aa][Nn][Dd]/,
+    OR: /[Oo][Rr]/,
 
     // Comparison
     EQ: "==",
