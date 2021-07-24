@@ -1,10 +1,6 @@
 import moo from "moo";
 
 export default moo.compile({
-    // Constants
-    BOOLEAN: /(?:true|false)/,
-    NUMBER: /[-]?(?:[0-9]*[.])?[0-9]+/,
-
     // Punctuation
     WS: /[ \t]+/,
     DOT: ".",
@@ -19,6 +15,10 @@ export default moo.compile({
     LOR: "||",
     AND: /[Aa][Nn][Dd]/,
     OR: /[Oo][Rr]/,
+
+    // Order
+    ASC: /[Aa][Ss][Cc]/,
+    DESC: /[Dd][Ee][Ss][Cc]/,
 
     // Comparison
     EQ: "==",
@@ -42,6 +42,8 @@ export default moo.compile({
 
     // Constants
     IDENTIFIER: /[a-zA-Z_][a-zA-Z0-9_]*/,
+    BOOLEAN: /(?:[Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee])/,
+    NUMBER: /[-]?(?:[0-9]*[.])?[0-9]+/,
     STRING: {
         match: /"(?:\\"|[^"])*"|'(?:\\"|[^"])*'/,
         value: rule => rule.replace(/^("|')|("|')$/g, ""),

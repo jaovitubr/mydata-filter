@@ -13,6 +13,8 @@ export interface ParseOptions {
     max_length?: number;
 }
 
+export * from "./features";
+
 export function Parse(code: string, options: ParseOptions = {}): Promise<string> {
     return new Promise((resolve, reject) => {
         try {
@@ -31,22 +33,24 @@ export function ParseSync(code: string, options: ParseOptions = {}): string {
     if (options.max_length && code.length > options.max_length)
         throw new Error("too larger");
 
-    if (options.cache !== false) {
-        const cached_code = CacheGet(code);
-        if (cached_code) return cached_code;
+    let ast_code;
+
+    if (options.cache !== false) ast_code = CacheGet(code);
+
+    if (!ast_code) {
+        const parser = new Parser(grammar);
+        parser.feed(code);
+
+        ast_code = parser.results?.[0];
     }
 
-    const parser = new Parser(grammar);
-    parser.feed(code);
+    if (options.cache !== false) CachePut(code, ast_code);
 
-    let result = parser.results?.[0];
-    if (!result) throw new Error("nothing to parse");
+    if (!ast_code) throw new Error("nothing to parse");
 
     if (typeof options.transformer?.transform === "function") {
-        result = options.transformer.transform(result);
+        return options.transformer.transform(ast_code);
+    } else {
+        return ast_code;
     }
-
-    if (options.cache !== false) CachePut(code, result);
-
-    return result;
 }
