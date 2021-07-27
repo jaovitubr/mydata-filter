@@ -108,26 +108,21 @@ LE | Less than or equal
 GE | Greater Than or Equal
 NEQ | Not Equals
 EQ | Equals
-
 CONTAINS | Contains Operator
 CONTAINS_WORD | Contains Word Operator
 STARTS_WITH | Starts With Operator
 ENDS_WITH | Ends With Operator
-
 ADDITION | Arithmetic Addiction
 SUBTRACTION | Arithmetic Subtraction
 MULTIPLICATION | Arithmetic Multiplication
 DIVISION | Arithmetic Division
-
 PARENTHESES | Parentheses
 IDENTIFIER_PATH | Deep Identifier separated by dot
 IDENTIFIER | Simple identifier
 BOOLEAN | Boolean Type
 NUMBER | Number Type
 STRING | String Type
-
 FUNCTION_CALL | Call Function
-
 ASC | Sort ascending
 DESC | Sort descending
 SORTING_LIST | Multiple sorters separated by comma
