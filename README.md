@@ -100,7 +100,6 @@ Sorter descending | DESC
 ## Supported Features Identifiers Name
 Name | Description
 ------------ | -------------
-
 OR | Logical Or
 AND | Logical And
 LT | Less Than
