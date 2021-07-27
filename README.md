@@ -39,7 +39,9 @@ import MySqlTransformer from "mydata-filter-mysql";
 const code = `(user.username == "Ana") or (username == "Ana")`;
 
 Parse(code, {
-    transformer: new MySqlTransformer()
+    transformer: new MySqlTransformer({
+        clause: "WHERE"
+    })
 }).then(query => {
     console.log(query); // (`user`.`username` == 'Ana') OR (`username` == 'Ana')
 }).catch(error => {
@@ -69,9 +71,8 @@ ParseSync(code, {
 
 ## Functions Syntax
 ```javascript
+FunctionName(arg1)
 FUNCTION_NAME(arg1, arg2, ...)
-LOWER(arg1)
-concat(arg1, arg2)
 ```
 ## Supported Operators
 
@@ -93,3 +94,41 @@ Arithmetic Add | +
 Arithmetic Subtraction | -
 Arithmetic Multiplication | *
 Arithmetic Division | /
+Sorter ascending | ASC
+Sorter descending | DESC
+
+## Supported Features Identifiers Name
+Name | Description
+------------ | -------------
+
+OR | Logical Or
+AND | Logical And
+LT | Less Than
+GT | Greater Than
+LE | Less than or equal
+GE | Greater Than or Equal
+NEQ | Not Equals
+EQ | Equals
+
+CONTAINS | Contains Operator
+CONTAINS_WORD | Contains Word Operator
+STARTS_WITH | Starts With Operator
+ENDS_WITH | Ends With Operator
+
+ADDITION | Arithmetic Addiction
+SUBTRACTION | Arithmetic Subtraction
+MULTIPLICATION | Arithmetic Multiplication
+DIVISION | Arithmetic Division
+
+PARENTHESES | Parentheses
+IDENTIFIER_PATH | Deep Identifier separated by dot
+IDENTIFIER | Simple identifier
+BOOLEAN | Boolean Type
+NUMBER | Number Type
+STRING | String Type
+
+FUNCTION_CALL | Call Function
+
+ASC | Sort ascending
+DESC | Sort descending
+SORTING_LIST | Multiple sorters separated by comma

@@ -10,7 +10,6 @@ export interface ITransformer {
 export interface ParseOptions {
     cache?: boolean;
     transformer?: ITransformer;
-    max_length?: number;
 }
 
 export * from "./features";
@@ -29,9 +28,6 @@ export function Parse(code: string, options: ParseOptions = {}): Promise<string>
 
 export function ParseSync(code: string, options: ParseOptions = {}): string {
     if (!code?.length) return "";
-
-    if (options.max_length && code.length > options.max_length)
-        throw new Error("too larger");
 
     let ast_code;
 
