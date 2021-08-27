@@ -14,7 +14,7 @@ export interface ParseOptions {
 
 export * from "./features";
 
-export function Parse(code: string, options: ParseOptions = {}): Promise<string> {
+export function Parse(code: string, options: ParseOptions = {}): Promise<any> {
     return new Promise((resolve, reject) => {
         try {
             const result = ParseSync(code, options);
@@ -26,10 +26,10 @@ export function Parse(code: string, options: ParseOptions = {}): Promise<string>
     });
 }
 
-export function ParseSync(code: string, options: ParseOptions = {}): string {
+export function ParseSync(code: string, options: ParseOptions = {}): any {
     if (!code?.length) return "";
 
-    let ast_code;
+    let ast_code = null;
 
     if (options.cache !== false) ast_code = CacheGet(code);
 
